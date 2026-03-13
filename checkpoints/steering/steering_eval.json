@@ -1,0 +1,12 @@
+{
+  "jailbreak_shift_mean": 1449.927001953125,
+  "jailbreak_shift_std": 203.69593811035156,
+  "benign_shift_mean": 15.38528060913086,
+  "benign_shift_std": 368.26416015625,
+  "jailbreak_proj_before": -21.835355758666992,
+  "jailbreak_proj_after": 1428.091552734375,
+  "benign_proj_before": -73.97463989257812,
+  "benign_proj_after": -58.589351654052734,
+  "benign_change_norm_mean": 506.2522277832031,
+  "jailbreak_change_norm_mean": 2360.675048828125
+}

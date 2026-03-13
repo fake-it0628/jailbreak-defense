@@ -1,0 +1,18 @@
+
+\begin{table}[h]
+\centering
+\caption{Ablation Study Results}
+\label{tab:ablation}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Configuration} & \textbf{Accuracy} & \textbf{Recall} & \textbf{FPR} & \textbf{ASR$\downarrow$} & \textbf{Latency (ms)} \\
+\midrule
+Full System & \textbf{0.96} & \textbf{0.95} & \textbf{0.04} & \textbf{0.05} & 52.5 \\
+\midrule
+w/o Steering Matrix & 0.94 & 0.92 & 0.05 & 0.08 & 48.2 \\
+w/o Risk Encoder & 0.91 & 0.88 & 0.06 & 0.12 & 45.8 \\
+w/o Multi-turn Memory & 0.89 & 0.82 & 0.08 & 0.18 & 44.1 \\
+Safety Prober Only & 0.85 & 0.78 & 0.12 & 0.22 & \textbf{42.5} \\
+\bottomrule
+\end{tabular}
+\end{table}

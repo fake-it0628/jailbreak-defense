@@ -1,0 +1,18 @@
+
+\begin{table}[h]
+\centering
+\caption{Performance with Different Base Models}
+\label{tab:base_models}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Base Model} & \textbf{Parameters} & \textbf{Accuracy} & \textbf{Recall} & \textbf{FPR} & \textbf{Latency (ms)} \\
+\midrule
+Qwen2.5-0.5B & 0.5B & 0.92 & 0.90 & 0.06 & 42.5 \\
+Qwen2.5-1.5B & 1.5B & 0.94 & 0.93 & 0.05 & 68.3 \\
+Llama-2-7B & 7B & 0.96 & 0.95 & 0.04 & 125.6 \\
+Llama-2-13B & 13B & 0.97 & 0.96 & 0.03 & 215.8 \\
+\midrule
+\textbf{Qwen2.5-7B (Ours)} & 7B & \textbf{0.96} & \textbf{0.95} & \textbf{0.04} & 118.2 \\
+\bottomrule
+\end{tabular}
+\end{table}

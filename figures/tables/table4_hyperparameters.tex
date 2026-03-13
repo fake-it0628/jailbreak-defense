@@ -1,0 +1,32 @@
+
+\begin{table}[h]
+\centering
+\caption{Hyperparameter Settings}
+\label{tab:hyperparameters}
+\begin{tabular}{llc}
+\toprule
+\textbf{Module} & \textbf{Hyperparameter} & \textbf{Value} \\
+\midrule
+\multirow{4}{*}{Safety Prober} 
+& Hidden dimension & 896 \\
+& Learning rate & 1e-3 \\
+& Batch size & 8 \\
+& Epochs & 10 \\
+\midrule
+\multirow{3}{*}{Steering Matrix}
+& Rank & 64 \\
+& Max steering strength & 2.0 \\
+& Null-space threshold & 0.95 \\
+\midrule
+\multirow{4}{*}{Risk Encoder}
+& Latent dimension & 64 \\
+& RNN type & GRU \\
+& KL weight & 0.1 \\
+& Decay rate & 0.9 \\
+\midrule
+\multirow{2}{*}{Defense System}
+& Risk threshold & 0.5 \\
+& Block threshold & 0.85 \\
+\bottomrule
+\end{tabular}
+\end{table}

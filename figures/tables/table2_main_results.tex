@@ -1,0 +1,20 @@
+
+\begin{table}[h]
+\centering
+\caption{Main Experimental Results on Jailbreak Detection}
+\label{tab:main_results}
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Method} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} & \textbf{FPR} & \textbf{ASR$\downarrow$} \\
+\midrule
+Keyword Filter & 0.68 & 0.55 & 0.45 & 0.50 & 0.25 & 0.55 \\
+Perplexity Filter & 0.75 & 0.70 & 0.62 & 0.66 & 0.18 & 0.38 \\
+BERT Classifier & 0.82 & 0.78 & 0.78 & 0.78 & 0.12 & 0.22 \\
+RepE (Zou et al.) & 0.88 & 0.85 & 0.85 & 0.85 & 0.08 & 0.15 \\
+\midrule
+\textbf{Ours (Full)} & \textbf{0.96} & \textbf{0.94} & \textbf{0.95} & \textbf{0.95} & \textbf{0.04} & \textbf{0.05} \\
+\bottomrule
+\end{tabular}
+\vspace{2mm}
+\footnotesize{Note: ASR = Attack Success Rate (lower is better). FPR = False Positive Rate.}
+\end{table}

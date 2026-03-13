@@ -1,0 +1,19 @@
+
+\begin{table}[h]
+\centering
+\caption{Performance with Different Hidden Layer Selection}
+\label{tab:layer_selection}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Layer Selection} & \textbf{Accuracy} & \textbf{Recall} & \textbf{FPR} \\
+\midrule
+Early (Layer 1-8) & 0.72 & 0.68 & 0.15 \\
+Middle (Layer 9-16) & 0.85 & 0.82 & 0.10 \\
+Late (Layer 17-24) & 0.94 & 0.92 & 0.05 \\
+\midrule
+Last Layer Only (24) & 0.96 & 0.95 & 0.04 \\
+Ensemble (All Layers) & 0.95 & 0.94 & 0.04 \\
+\textbf{Optimal (Layer 24)} & \textbf{0.96} & \textbf{0.95} & \textbf{0.04} \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment
+.env
+*.env.local
+
+# Data (large files)
+data/raw/
+data/processed/
+data/splits/
+hidden_states/
+
+# Model checkpoints (large files)
+checkpoints/*.pt
+checkpoints/*.pth
+models/*.pt
+models/*.pth
+
+# Results (can be regenerated)
+results/*.json
+
+# LaTeX auxiliary files
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.toc
+paper/*.bbl
+paper/*.blg
+paper/*.synctex.gz
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Keep these directories but ignore contents
+!data/.gitkeep
+!hidden_states/.gitkeep
+!checkpoints/.gitkeep
+!results/.gitkeep

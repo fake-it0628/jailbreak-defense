@@ -1,0 +1,11 @@
+{
+  "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+  "layer_idx": 24,
+  "direction_norm": 181.1535186767578,
+  "refusal_mean_proj": 64.82183074951172,
+  "compliance_mean_proj": -116.33171081542969,
+  "separation": 181.15353393554688,
+  "cohens_d": 8.878405570983887,
+  "accuracy": 1.0,
+  "threshold": -25.754940032958984
+}
