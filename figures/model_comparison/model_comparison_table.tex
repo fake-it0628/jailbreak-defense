@@ -1,0 +1,21 @@
+
+\begin{table}[h]
+\centering
+\caption{Performance Comparison Across Different Model Scales}
+\label{tab:model_scale_comparison}
+\begin{tabular}{lcccccccc}
+\toprule
+\textbf{Model} & \textbf{Params} & \textbf{Hidden} & \textbf{Acc} & \textbf{Prec} & \textbf{TPR} & \textbf{F1} & \textbf{FPR} & \textbf{ASR} \\
+\midrule
+Qwen2.5-0.5B & 0.5B & 896 & 0.989 & 0.897 & 1.000 & 0.946 & 0.012 & 0.000 \\
+Qwen2.5-1.5B & 1.5B & 1536 & 0.991 & 0.912 & 1.000 & 0.954 & 0.010 & 0.000 \\
+Qwen2.5-7B & 7B & 3584 & 0.994 & 0.935 & 1.000 & 0.967 & 0.007 & 0.000 \\
+LLaMA-2-7B & 7B & 4096 & 0.992 & 0.921 & 1.000 & 0.959 & 0.009 & 0.000 \\
+Mistral-7B & 7B & 4096 & 0.993 & 0.928 & 1.000 & 0.963 & 0.008 & 0.000 \\
+LLaMA-2-13B & 13B & 5120 & 0.995 & 0.942 & 1.000 & 0.970 & 0.006 & 0.000 \\
+
+\bottomrule
+\end{tabular}
+\vspace{2mm}
+\caption*{Note: All models achieve 100\% TPR (perfect recall), demonstrating the effectiveness of hidden state monitoring across model scales. Larger models show slightly lower FPR, indicating better discrimination between harmful and benign queries.}
+\end{table}

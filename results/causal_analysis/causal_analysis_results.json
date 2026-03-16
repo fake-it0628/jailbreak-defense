@@ -1,0 +1,52 @@
+{
+  "intervention_analysis": {
+    "observational": {
+      "P(Y=harmful|X=harmful)": 0.8672268907563025,
+      "P(Y=harmful|do(risk<0.4))": 0.0
+    },
+    "causal_effects": {
+      "Average_Causal_Effect": 0.7344537815126051,
+      "Controlled_Direct_Effect_high": 0.0,
+      "Controlled_Direct_Effect_low": 0.0
+    },
+    "interpretation": {
+      "ace_meaning": "Difference in harmful output probability between harmful and benign inputs",
+      "cde_meaning": "Direct effect of input type controlling for hidden state level"
+    }
+  },
+  "mediation_analysis": {
+    "coefficients": {
+      "intercept": 0.10045995128892388,
+      "direct_effect_X": 0.2985788421377863,
+      "hidden_state_effect_1": 0.11474408222560467,
+      "hidden_state_effect_2": 0.1230787578350718
+    },
+    "mediation_effects": {
+      "Total_Effect": 0.7561948622865521,
+      "Natural_Direct_Effect": 0.2985788421377863,
+      "Natural_Indirect_Effect": 0.4576160201487658,
+      "Proportion_Mediated": 0.605156214318945
+    },
+    "interpretation": {
+      "nde_meaning": "Effect of harmful input on output NOT through hidden states",
+      "nie_meaning": "Effect of harmful input on output THROUGH hidden states",
+      "proportion_meaning": "60.5% of the effect is mediated by hidden states"
+    }
+  },
+  "counterfactual_analysis": {
+    "counterfactual_queries": {
+      "Factual_Y_for_harmful": 0.8672268907563025,
+      "Counterfactual_Y_intervened": 0.0
+    },
+    "treatment_effects": {
+      "Effect_of_Treatment_on_Treated": 0.8672268907563025,
+      "Mean_Individual_TE": 0.8672268907563025,
+      "Std_Individual_TE": 0.3393293543232867,
+      "Proportion_benefited": 0.8672268907563025
+    },
+    "interpretation": {
+      "ett_meaning": "Intervention reduces harmful output probability by 86.7%",
+      "benefit_meaning": "86.7% of harmful inputs would benefit from intervention"
+    }
+  }
+}

@@ -385,21 +385,103 @@ $$
 
 ## 参考文献
 
+### 越狱攻击
+
 [1] Zou A, Wang Z, Carlini N, et al. Universal and Transferable Adversarial Attacks on Aligned Language Models[J]. arXiv preprint arXiv:2307.15043, 2023.
 
-[2] Perez F, Ribeiro I. Red Teaming Language Models with Language Models[J]. arXiv preprint arXiv:2209.07858, 2022.
+[2] Wei A, Haghtalab N, Steinhardt J. Jailbroken: How Does LLM Safety Training Fail?[J]. arXiv preprint arXiv:2307.02483, 2023.
 
-[3] Wei A, Haghtalab N, Steinhardt J. Jailbroken: How Does LLM Safety Training Fail?[J]. arXiv preprint arXiv:2307.02483, 2023.
+[3] Chao P, Robey A, Dobriban E, et al. Jailbreaking Black Box Large Language Models in Twenty Queries[J]. arXiv preprint arXiv:2310.08419, 2023.
 
-[4] Chao P, Robey A, Dobriban E, et al. Jailbreaking Black Box Large Language Models in Twenty Queries[J]. arXiv preprint arXiv:2310.08419, 2023.
+[4] Liu X, Xu N, Chen M, et al. AutoDAN: Generating Stealthy Jailbreak Prompts on Aligned Large Language Models[J]. arXiv preprint arXiv:2310.04451, 2024.
 
-[5] Li K, Patel O, Viégas F, et al. Inference-Time Intervention: Eliciting Truthful Answers from a Language Model[C]//NeurIPS. 2023.
+[5] Yu J, Lin X, Xing X. GPTFuzzer: Red Teaming Large Language Models with Auto-Generated Jailbreak Prompts[J]. arXiv preprint arXiv:2309.10253, 2024.
 
-[6] Alon G, Kamfonas M. Detecting Language Model Attacks with Perplexity[J]. arXiv preprint arXiv:2308.14132, 2023.
+[6] Deng G, Liu Y, Li Y, et al. MasterKey: Automated Jailbreak Across Multiple Large Language Model Chatbots[J]. arXiv preprint arXiv:2307.08715, 2024.
 
-[7] Taori R, Gulrajani I, Zhang T, et al. Stanford Alpaca: An Instruction-following LLaMA model[EB/OL]. GitHub, 2023.
+[7] Andriushchenko M, Croce F, Flammarion N. Jailbreaking Leading Safety-Aligned LLMs with Simple Adaptive Attacks[J]. arXiv preprint arXiv:2404.02151, 2024.
 
-[8] Zou A, Phan L, Chen S, et al. Representation Engineering: A Top-Down Approach to AI Transparency[J]. arXiv preprint arXiv:2310.01405, 2023.
+[8] Huang Y, Gupta S, Zhong M, et al. Catastrophic Jailbreak of Open-source LLMs via Exploiting Generation[J]. arXiv preprint arXiv:2310.06987, 2024.
+
+### 防御机制
+
+[9] Robey A, Wong E, Hassani H, et al. SmoothLLM: Defending Large Language Models Against Jailbreaking Attacks[J]. arXiv preprint arXiv:2310.03684, 2024.
+
+[10] Xie Y, Yi J, Shao J, et al. Defending ChatGPT against Jailbreak Attack via Self-Reminders[J]. Nature Machine Intelligence, 2023.
+
+[11] Jain N, Schwarzschild A, Wen Y, et al. Baseline Defenses for Adversarial Attacks Against Aligned Language Models[J]. arXiv preprint arXiv:2309.00614, 2023.
+
+[12] Kumar A, Agarwal C, Srinivas S, et al. Certifying LLM Safety against Adversarial Prompting[J]. arXiv preprint arXiv:2309.02705, 2024.
+
+[13] Alon G, Kamfonas M. Detecting Language Model Attacks with Perplexity[J]. arXiv preprint arXiv:2308.14132, 2023.
+
+[14] Inan H, Upasani K, Chi J, et al. Llama Guard: LLM-based Input-Output Safeguard for Human-AI Conversations[J]. arXiv preprint arXiv:2312.06674, 2023.
+
+[15] Xu Z, Jiang F, Niu L, et al. SafeDecoding: Defending against Jailbreak Attacks via Safety-Aware Decoding[J]. arXiv preprint arXiv:2402.08983, 2024.
+
+### 表征工程
+
+[16] Zou A, Phan L, Chen S, et al. Representation Engineering: A Top-Down Approach to AI Transparency[J]. arXiv preprint arXiv:2310.01405, 2023.
+
+[17] Li K, Patel O, Viégas F, et al. Inference-Time Intervention: Eliciting Truthful Answers from a Language Model[C]//NeurIPS, 2024.
+
+[18] Turner A, Thiergart L, Udell M, et al. Activation Addition: Steering Language Models Without Optimization[J]. arXiv preprint arXiv:2308.10248, 2024.
+
+[19] Templeton A, Conerly T, Marcus J, et al. Scaling Monosemanticity: Extracting Interpretable Features from Claude 3 Sonnet[J]. Anthropic Technical Report, 2024.
+
+[20] Lee A, Bai X, Pres I, et al. A Mechanistic Understanding of Alignment Algorithms: A Case Study on DPO and Toxicity[J]. arXiv preprint arXiv:2401.01967, 2024.
+
+### LLM安全与对齐
+
+[21] Ouyang L, Wu J, Jiang X, et al. Training language models to follow instructions with human feedback[J]. NeurIPS, 2022.
+
+[22] Bai Y, Kadavath S, Kundu S, et al. Constitutional AI: Harmlessness from AI Feedback[J]. arXiv preprint arXiv:2212.08073, 2022.
+
+[23] Perez E, Ringer S, Lukosiute K, et al. Red Teaming Language Models with Language Models[J]. arXiv preprint arXiv:2209.07858, 2022.
+
+[24] Ganguli D, Lovitt L, Kernion J, et al. Red Teaming Language Models to Reduce Harms[J]. arXiv preprint arXiv:2209.07858, 2022.
+
+[25] Qi X, Zeng Y, Xie T, et al. Fine-tuning Aligned Language Models Compromises Safety, Even When Users Do Not Intend To![J]. arXiv preprint arXiv:2310.03693, 2024.
+
+[26] Wolf Y, Hazan N, Oren I, et al. Fundamental Limitations of Alignment in Large Language Models[J]. arXiv preprint arXiv:2304.11082, 2024.
+
+### 基准与数据集
+
+[27] Mazeika M, Phan L, Yin X, et al. HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal[J]. arXiv preprint arXiv:2402.04249, 2024.
+
+[28] Chao P, Debenedetti E, Robey A, et al. JailbreakBench: An Open Robustness Benchmark for Jailbreaking Large Language Models[J]. arXiv preprint arXiv:2404.01318, 2024.
+
+[29] Wang Y, Li H, Han X, et al. Do-Not-Answer: A Dataset for Evaluating Safeguards in LLMs[J]. arXiv preprint arXiv:2308.13387, 2023.
+
+[30] Lin Z, Madaan Z, Yoon H, et al. ToxicChat: Unveiling Hidden Challenges of Toxicity Detection in Real-World User-AI Conversation[J]. arXiv preprint arXiv:2310.17389, 2024.
+
+### 可解释性
+
+[31] Elhage N, Hume T, Olsson C, et al. Toy Models of Superposition[J]. arXiv preprint arXiv:2209.10652, 2022.
+
+[32] Nanda N, Chan L, Lieberum T, et al. Progress Measures for Grokking via Mechanistic Interpretability[J]. arXiv preprint arXiv:2301.05217, 2023.
+
+[33] Conmy A, Mavor-Parker A, Lynch A, et al. Towards Automated Circuit Discovery for Mechanistic Interpretability[J]. NeurIPS, 2023.
+
+[34] Bills S, Cammarata N, Mossing D, et al. Language Models Can Explain Neurons in Language Models[J]. OpenAI Technical Report, 2023.
+
+### 因果推理
+
+[35] Pearl J. Causality: Models, Reasoning, and Inference[M]. Cambridge University Press, 2009.
+
+[36] Peters J, Janzing D, Schölkopf B. Elements of Causal Inference[M]. MIT Press, 2017.
+
+[37] Geiger A, Wu Z, Lu H, et al. Causal Abstraction for Faithful Model Interpretation[J]. arXiv preprint arXiv:2301.04709, 2024.
+
+### 基础模型
+
+[38] Touvron H, Lavril T, Izacard G, et al. LLaMA: Open and Efficient Foundation Language Models[J]. arXiv preprint arXiv:2302.13971, 2023.
+
+[39] Jiang A, Sablayrolles A, Mensch A, et al. Mistral 7B[J]. arXiv preprint arXiv:2310.06825, 2023.
+
+[40] Qwen Team. Qwen2 Technical Report[J]. arXiv preprint arXiv:2407.10671, 2024.
+
+[41] Taori R, Gulrajani I, Zhang T, et al. Stanford Alpaca: An Instruction-following LLaMA model[EB/OL]. GitHub, 2023.
 
 ---
 

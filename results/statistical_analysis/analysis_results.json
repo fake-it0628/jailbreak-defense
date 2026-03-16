@@ -1,0 +1,72 @@
+{
+  "hiscam_ci": {
+    "accuracy": {
+      "mean": 0.9901125455242081,
+      "95%CI": [
+        0.988424176652417,
+        0.9920116150359976
+      ]
+    },
+    "tpr": {
+      "mean": 1.0,
+      "95%CI": [
+        1.0,
+        1.0
+      ]
+    },
+    "fpr": {
+      "mean": 0.011318364266821502,
+      "95%CI": [
+        0.010115615250757342,
+        0.01253849065773755
+      ]
+    }
+  },
+  "pairwise_comparisons": [
+    {
+      "baseline": "keyword",
+      "t_statistic": 51.26444242069953,
+      "p_value": 5.224810253816527e-50,
+      "cohens_d": 13.23642211653189,
+      "significant": true,
+      "hiscam_better": true
+    },
+    {
+      "baseline": "perplexity",
+      "t_statistic": 31.286591766292688,
+      "p_value": 5.176854728454635e-38,
+      "cohens_d": 8.078163258029445,
+      "significant": true,
+      "hiscam_better": true
+    },
+    {
+      "baseline": "smooth_llm",
+      "t_statistic": 32.69804229408307,
+      "p_value": 4.583973721325398e-39,
+      "cohens_d": 8.442598217237968,
+      "significant": true,
+      "hiscam_better": true
+    },
+    {
+      "baseline": "self_reminder",
+      "t_statistic": 35.654835191554724,
+      "p_value": 3.822672080601451e-41,
+      "cohens_d": 9.206038860577438,
+      "significant": true,
+      "hiscam_better": true
+    },
+    {
+      "baseline": "llama_guard",
+      "t_statistic": 19.893957703671493,
+      "p_value": 1.3746200458589692e-27,
+      "cohens_d": 5.136597791764962,
+      "significant": true,
+      "hiscam_better": true
+    }
+  ],
+  "anova": {
+    "f_statistic": 379.0097146768557,
+    "p_value": 1.5635811166003333e-91,
+    "significant": true
+  }
+}

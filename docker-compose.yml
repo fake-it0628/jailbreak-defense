@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  hiscam:
+    build: .
+    container_name: hiscam-defense
+    volumes:
+      - ./data:/app/data
+      - ./checkpoints:/app/checkpoints
+      - ./results:/app/results
+      - ./figures:/app/figures
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: python -m pytest tests/ -v
+
+  demo:
+    build: .
+    container_name: hiscam-demo
+    ports:
+      - "7860:7860"
+    volumes:
+      - ./checkpoints:/app/checkpoints
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: python demo/app.py --server_name 0.0.0.0
+
+  training:
+    build: .
+    container_name: hiscam-training
+    volumes:
+      - ./data:/app/data
+      - ./checkpoints:/app/checkpoints
+      - ./results:/app/results
+    environment:
+      - PYTHONUNBUFFERED=1
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    command: python scripts/train_safety_prober.py

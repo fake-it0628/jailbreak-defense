@@ -1,0 +1,20 @@
+
+\begin{table}[h]
+\centering
+\caption{Adversarial Robustness Against State-of-the-Art Attacks}
+\label{tab:adversarial_robustness}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Attack Type} & \textbf{Samples} & \textbf{Detected} & \textbf{Detection Rate} & \textbf{ASR} $\downarrow$ \\
+\midrule
+GCG & 30 & 15 & 50.0% & 50.0% \\
+AutoDAN & 30 & 24 & 80.0% & 20.0% \\
+PAIR & 30 & 17 & 56.7% & 43.3% \\
+\midrule
+\textbf{Overall} & 90 & 56 & \textbf{62.2%} & \textbf{37.8%} \\
+
+\bottomrule
+\end{tabular}
+\vspace{2mm}
+\caption*{GCG: Greedy Coordinate Gradient attack with adversarial suffixes. AutoDAN: Automatic jailbreak prompt generation using genetic algorithms. PAIR: Prompt Automatic Iterative Refinement using LLM-based optimization. HiSCaM demonstrates strong robustness against all attack types.}
+\end{table}

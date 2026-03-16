@@ -1,0 +1,29 @@
+[
+  {
+    "attack_type": "GCG",
+    "total_attacks": 30,
+    "detected": 15,
+    "detection_rate": 0.5,
+    "attack_success_rate": 0.5,
+    "avg_risk_score": 0.24500000000000005,
+    "std_risk_score": 0.1301814972345234
+  },
+  {
+    "attack_type": "AutoDAN",
+    "total_attacks": 30,
+    "detected": 24,
+    "detection_rate": 0.8,
+    "attack_success_rate": 0.19999999999999996,
+    "avg_risk_score": 0.3950000000000001,
+    "std_risk_score": 0.20883938538716515
+  },
+  {
+    "attack_type": "PAIR",
+    "total_attacks": 30,
+    "detected": 17,
+    "detection_rate": 0.5666666666666667,
+    "attack_success_rate": 0.43333333333333335,
+    "avg_risk_score": 0.21833333333333338,
+    "std_risk_score": 0.12325447929656214
+  }
+]

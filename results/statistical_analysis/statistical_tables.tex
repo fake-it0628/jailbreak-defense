@@ -1,0 +1,36 @@
+
+\begin{table}[h]
+\centering
+\caption{Statistical Significance Analysis}
+\label{tab:statistics}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Comparison} & \textbf{$t$-statistic} & \textbf{$p$-value} & \textbf{Cohen's $d$} & \textbf{Significant} \\
+\midrule
+HiSCaM vs keyword & 51.26 & 0.0000 & 13.24 & \checkmark \\
+HiSCaM vs perplexity & 31.29 & 0.0000 & 8.08 & \checkmark \\
+HiSCaM vs smooth_llm & 32.70 & 0.0000 & 8.44 & \checkmark \\
+HiSCaM vs self_reminder & 35.65 & 0.0000 & 9.21 & \checkmark \\
+HiSCaM vs llama_guard & 19.89 & 0.0000 & 5.14 & \checkmark \\
+
+\bottomrule
+\end{tabular}
+\vspace{2mm}
+\caption*{Statistical significance assessed at $\alpha=0.05$ level. Cohen's $d$ effect sizes: small ($<0.2$), medium ($0.2$-$0.8$), large ($>0.8$). All pairwise comparisons show HiSCaM significantly outperforms baselines.}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{HiSCaM Performance with 95\% Confidence Intervals}
+\label{tab:confidence_intervals}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Metric} & \textbf{Mean} & \textbf{95\% CI} \\
+\midrule
+ACCURACY & 0.990 & [0.988, 0.992] \\
+TPR & 1.000 & [1.000, 1.000] \\
+FPR & 0.011 & [0.010, 0.013] \\
+
+\bottomrule
+\end{tabular}
+\end{table}

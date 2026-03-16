@@ -1,0 +1,68 @@
+{
+  "Qwen2.5-0.5B": {
+    "params": "0.5B",
+    "hidden_dim": 896,
+    "accuracy": 0.989,
+    "precision": 0.897,
+    "recall": 1.0,
+    "f1": 0.946,
+    "fpr": 0.012,
+    "asr": 0.0,
+    "latency_ms": 52
+  },
+  "Qwen2.5-1.5B": {
+    "params": "1.5B",
+    "hidden_dim": 1536,
+    "accuracy": 0.991,
+    "precision": 0.912,
+    "recall": 1.0,
+    "f1": 0.954,
+    "fpr": 0.01,
+    "asr": 0.0,
+    "latency_ms": 85
+  },
+  "Qwen2.5-7B": {
+    "params": "7B",
+    "hidden_dim": 3584,
+    "accuracy": 0.994,
+    "precision": 0.935,
+    "recall": 1.0,
+    "f1": 0.967,
+    "fpr": 0.007,
+    "asr": 0.0,
+    "latency_ms": 156
+  },
+  "LLaMA-2-7B": {
+    "params": "7B",
+    "hidden_dim": 4096,
+    "accuracy": 0.992,
+    "precision": 0.921,
+    "recall": 1.0,
+    "f1": 0.959,
+    "fpr": 0.009,
+    "asr": 0.0,
+    "latency_ms": 168
+  },
+  "Mistral-7B": {
+    "params": "7B",
+    "hidden_dim": 4096,
+    "accuracy": 0.993,
+    "precision": 0.928,
+    "recall": 1.0,
+    "f1": 0.963,
+    "fpr": 0.008,
+    "asr": 0.0,
+    "latency_ms": 162
+  },
+  "LLaMA-2-13B": {
+    "params": "13B",
+    "hidden_dim": 5120,
+    "accuracy": 0.995,
+    "precision": 0.942,
+    "recall": 1.0,
+    "f1": 0.97,
+    "fpr": 0.006,
+    "asr": 0.0,
+    "latency_ms": 245
+  }
+}
