@@ -31,6 +31,7 @@
 
 - **[2026.03]** 🎉 Initial release with pre-trained checkpoints!
 - **[2026.03]** 📊 Achieved **100% detection rate** on jailbreak benchmark
+- **[2026.03]** 📦 **Dataset v2**：有害提示扩展至 **~5000**（AdvBench 种子 + 英语模板扩展），并含 **~1500** 条文言文 / **CC-BOS 风格**（官职、典籍、隐喻）规则合成样本；划分仍为 70%/15%/15%。使用新数据请重新运行预处理与训练流水线（见下文）。
 
 ---
 
@@ -186,7 +187,10 @@ print(f"Action: {result.action_taken}")  # 'pass', 'steer', or 'block'
 ```bash
 # Step 1: Prepare data
 python scripts/download_datasets.py
+# Build ~5k harmful (incl. ~1.5k classical-Chinese / CC-BOS-style synthetic prompts)
+python scripts/build_large_harmful_dataset.py --total 5000 --wenyan 1500
 python scripts/preprocess_data.py
+python scripts/verify_data.py
 
 # Step 2: Generate hidden states
 python scripts/generate_hidden_states.py
@@ -202,6 +206,14 @@ python scripts/integrate_system.py
 python scripts/evaluate_benchmark.py
 ```
 
+**Dataset v2 summary (default)** | Source | Count |
+|---|---|---|
+| Benign (Alpaca) | `alpaca` | 5,000 |
+| Harmful (unified) | AdvBench + English templates + `wenyan_cc_bos_style` | **5,000** (incl. **~1,500** classical Chinese) |
+| Train / val / test split | 70% / 15% / 15% | e.g. jailbreak **3,500 / 750 / 750** |
+
+Generated files live under `data/` (see `.gitignore`); regenerate locally with the scripts above.
+
 ---
 
 ## 📁 Project Structure
@@ -216,6 +228,7 @@ jailbreak-defense/
 │   └── defense_system.py         # 🛡️ Complete defense pipeline
 ├── 📂 demo/                      # 🎮 Interactive demo (Gradio)
 ├── 📂 scripts/                   # Training & evaluation scripts
+│   └── build_large_harmful_dataset.py  # Dataset v2: ~5k harmful + ~1.5k classical Chinese
 ├── 📂 checkpoints/               # Pre-trained models ✓
 ├── 📂 figures/                   # Paper figures
 ├── 📂 paper/                     # Paper drafts (LaTeX, PDF)

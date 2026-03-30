@@ -36,7 +36,13 @@ def save_json(data, path: Path):
     """保存JSON文件"""
     with open(path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
-    print(f"✓ 已保存: {path} ({len(data)} 样本)")
+    if isinstance(data, list):
+        n = len(data)
+    elif isinstance(data, dict):
+        n = sum(len(v) if isinstance(v, list) else 1 for v in data.values())
+    else:
+        n = 0
+    print(f"✓ 已保存: {path} ({n} 条记录)")
 
 
 def process_jailbreak_prompts():
@@ -45,19 +51,35 @@ def process_jailbreak_prompts():
     
     jailbreak_prompts = []
     
-    # 加载AdvBench
-    advbench_path = RAW_DIR / "advbench" / "advbench_prompts.json"
-    if advbench_path.exists():
-        advbench = load_json(advbench_path)
-        for i, item in enumerate(advbench):
+    # 优先：大规模合并集（build_large_harmful_dataset.py 生成，含英语扩展 + 文言/CC-BOS 风格）
+    unified_path = RAW_DIR / "harmful_expanded" / "harmful_unified.json"
+    if unified_path.exists():
+        print(f"  使用合并有害集: {unified_path}")
+        unified = load_json(unified_path)
+        for item in unified:
             jailbreak_prompts.append({
-                "id": f"advbench_{i}",
+                "id": item.get("id", f"u_{len(jailbreak_prompts)}"),
                 "prompt": item.get("prompt", ""),
                 "category": item.get("category", "harmful_behavior"),
-                "source": "advbench"
+                "source": item.get("source", "harmful_expanded"),
+                "meta": item.get("meta"),
             })
+    else:
+        # 回退：仅 AdvBench
+        advbench_path = RAW_DIR / "advbench" / "advbench_prompts.json"
+        if advbench_path.exists():
+            advbench = load_json(advbench_path)
+            for i, item in enumerate(advbench):
+                jailbreak_prompts.append({
+                    "id": f"advbench_{i}",
+                    "prompt": item.get("prompt", ""),
+                    "category": item.get("category", "harmful_behavior"),
+                    "source": "advbench"
+                })
+        else:
+            print("  ⚠ 未找到 harmful_unified.json 与 advbench，越狱集为空")
     
-    # 去重
+    # 去重（按文本）
     seen = set()
     unique = []
     for item in jailbreak_prompts:

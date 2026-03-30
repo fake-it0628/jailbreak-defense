@@ -25,17 +25,20 @@ def verify_raw_data():
     
     raw_dir = Path("data/raw")
     
-    files = [
-        ("advbench/advbench_prompts.json", "越狱提示"),
+    required = [
+        ("advbench/advbench_prompts.json", "越狱提示(AdvBench种子)"),
         ("alpaca/alpaca_prompts.json", "良性指令"),
         ("jailbreak_templates/jailbreak_templates.json", "越狱模板"),
         ("training_pairs/refusal_samples.json", "拒绝样本"),
         ("training_pairs/compliance_samples.json", "遵从样本"),
         ("multi_turn/multi_turn_attacks.json", "多轮攻击"),
     ]
+    optional = [
+        ("harmful_expanded/harmful_unified.json", "合并有害集(v2, 运行 build_large_harmful_dataset.py 生成)"),
+    ]
     
     all_ok = True
-    for filename, desc in files:
+    for filename, desc in required:
         filepath = raw_dir / filename
         if filepath.exists():
             with open(filepath, 'r', encoding='utf-8') as f:
@@ -44,6 +47,15 @@ def verify_raw_data():
         else:
             print(f"✗ {desc}: 文件不存在 ({filepath})")
             all_ok = False
+
+    for filename, desc in optional:
+        filepath = raw_dir / filename
+        if filepath.exists():
+            with open(filepath, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            print(f"✓ {desc}: {len(data)} 样本")
+        else:
+            print(f"○ {desc}: 未生成（可选）→ {filepath}")
     
     return all_ok
 
