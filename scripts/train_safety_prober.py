@@ -27,19 +27,35 @@ import sys
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from src.models.safety_prober import SafetyProber
+from src.data_subset import apply_category_limits
 
 
 class HiddenStateDataset(Dataset):
     """隐藏状态数据集"""
     
-    def __init__(self, split_path: Path, layer_idx: int = -1):
+    def __init__(
+        self,
+        split_path: Path,
+        layer_idx: int = -1,
+        jailbreak_limit: int = 0,
+        benign_limit: int = 0,
+        prefer_wenyan: bool = False,
+    ):
         """
         Args:
             split_path: 数据划分JSON文件路径
             layer_idx: 使用哪一层的隐藏状态
+            jailbreak_limit / benign_limit: >0 时对该 split 限量（0 不限制）
+            prefer_wenyan: 越狱限量时优先文言文/CC-BOS 风格
         """
         with open(split_path, 'r', encoding='utf-8') as f:
-            self.data = json.load(f)
+            raw = json.load(f)
+        self.data = apply_category_limits(
+            raw,
+            jailbreak_limit=jailbreak_limit,
+            benign_limit=benign_limit,
+            prefer_wenyan=prefer_wenyan,
+        )
         
         self.samples = []
         self.layer_idx = layer_idx
@@ -222,7 +238,52 @@ def main():
     parser.add_argument("--batch_size", type=int, default=8)
     parser.add_argument("--lr", type=float, default=1e-3)
     parser.add_argument("--device", type=str, default="auto")
+    parser.add_argument(
+        "--jailbreak_limit",
+        type=int,
+        default=0,
+        help="训练/验证/测试各 split 越狱条数上限（0 不限制）",
+    )
+    parser.add_argument(
+        "--benign_limit",
+        type=int,
+        default=0,
+        help="训练/验证/测试各 split 良性条数上限（0 不限制）",
+    )
+    parser.add_argument(
+        "--prefer_wenyan",
+        action="store_true",
+        help="越狱限量时优先保留 wenyan_cc_bos_style",
+    )
+    parser.add_argument(
+        "--val_jailbreak_limit",
+        type=int,
+        default=0,
+        help="验证集越狱上限；0 表示与 --jailbreak_limit 相同",
+    )
+    parser.add_argument(
+        "--val_benign_limit",
+        type=int,
+        default=0,
+        help="验证集良性上限；0 表示与 --benign_limit 相同",
+    )
+    parser.add_argument(
+        "--test_jailbreak_limit",
+        type=int,
+        default=0,
+        help="测试集越狱上限；0 表示与 --jailbreak_limit 相同",
+    )
+    parser.add_argument(
+        "--test_benign_limit",
+        type=int,
+        default=0,
+        help="测试集良性上限；0 表示与 --benign_limit 相同",
+    )
     args = parser.parse_args()
+    val_jb = args.val_jailbreak_limit or args.jailbreak_limit
+    val_bn = args.val_benign_limit or args.benign_limit
+    test_jb = args.test_jailbreak_limit or args.jailbreak_limit
+    test_bn = args.test_benign_limit or args.benign_limit
     
     print("=" * 60)
     print(" [TRAIN] Safety Prober Training Script")
@@ -267,8 +328,18 @@ def main():
     
     # 加载数据
     print("\nLoading data...")
-    train_dataset = HiddenStateDataset(Path("data/splits/train.json"))
-    val_dataset = HiddenStateDataset(Path("data/splits/val.json"))
+    train_dataset = HiddenStateDataset(
+        Path("data/splits/train.json"),
+        jailbreak_limit=args.jailbreak_limit,
+        benign_limit=args.benign_limit,
+        prefer_wenyan=args.prefer_wenyan,
+    )
+    val_dataset = HiddenStateDataset(
+        Path("data/splits/val.json"),
+        jailbreak_limit=val_jb,
+        benign_limit=val_bn,
+        prefer_wenyan=args.prefer_wenyan,
+    )
     
     print(f"Train samples: {len(train_dataset)}")
     print(f"Val samples: {len(val_dataset)}")
@@ -334,7 +405,12 @@ def main():
     checkpoint = torch.load(output_dir / "best_model.pt")
     prober.load_state_dict(checkpoint["model_state_dict"])
     
-    test_dataset = HiddenStateDataset(Path("data/splits/test.json"))
+    test_dataset = HiddenStateDataset(
+        Path("data/splits/test.json"),
+        jailbreak_limit=test_jb,
+        benign_limit=test_bn,
+        prefer_wenyan=args.prefer_wenyan,
+    )
     test_loader = DataLoader(
         test_dataset,
         batch_size=args.batch_size,

@@ -25,6 +25,7 @@ from tqdm import tqdm
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from src.defense_system import JailbreakDefenseSystem
+from src.data_subset import apply_category_limits
 
 
 def load_test_data(test_path: Path):
@@ -146,6 +147,13 @@ def main():
     parser = argparse.ArgumentParser(description="Evaluate Defense System")
     parser.add_argument("--model_name", type=str, default="Qwen/Qwen2.5-0.5B-Instruct")
     parser.add_argument("--device", type=str, default="auto")
+    parser.add_argument("--jailbreak_limit", type=int, default=0, help="测试集越狱上限（0 不限制）")
+    parser.add_argument("--benign_limit", type=int, default=0, help="测试集良性上限（0 不限制）")
+    parser.add_argument(
+        "--prefer_wenyan",
+        action="store_true",
+        help="越狱限量时优先保留 wenyan_cc_bos_style",
+    )
     args = parser.parse_args()
     
     print("=" * 60)
@@ -206,7 +214,18 @@ def main():
         return
     
     test_data = load_test_data(test_path)
-    
+    test_data = apply_category_limits(
+        test_data,
+        jailbreak_limit=args.jailbreak_limit,
+        benign_limit=args.benign_limit,
+        prefer_wenyan=args.prefer_wenyan,
+    )
+    if args.jailbreak_limit > 0 or args.benign_limit > 0:
+        print(
+            f"[subset] test jailbreak={len(test_data.get('jailbreak', []))}, "
+            f"benign={len(test_data.get('benign', []))}"
+        )
+
     # 评估各类别
     print("\nEvaluating...")
     results_dict = {}

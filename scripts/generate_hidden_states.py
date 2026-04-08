@@ -23,6 +23,11 @@ from typing import List, Dict
 from dotenv import load_dotenv
 load_dotenv()
 
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+from src.data_subset import apply_category_limits
+
 
 def parse_args():
     parser = argparse.ArgumentParser(description="提取LLM隐藏状态")
@@ -55,6 +60,23 @@ def parse_args():
         type=str,
         default="all",
         help="要提取的层 (all/10,15,20/last)"
+    )
+    parser.add_argument(
+        "--jailbreak_limit",
+        type=int,
+        default=0,
+        help="每个 split 最多处理多少条越狱样本（0 表示不限制）",
+    )
+    parser.add_argument(
+        "--benign_limit",
+        type=int,
+        default=0,
+        help="每个 split 最多处理多少条良性样本（0 表示不限制）",
+    )
+    parser.add_argument(
+        "--prefer_wenyan",
+        action="store_true",
+        help="限量越狱时优先保留 source=wenyan_cc_bos_style 的样本",
     )
     return parser.parse_args()
 
@@ -220,6 +242,13 @@ def main():
         
         with open(split_path, 'r', encoding='utf-8') as f:
             split_data = json.load(f)
+
+        split_data = apply_category_limits(
+            split_data,
+            jailbreak_limit=args.jailbreak_limit,
+            benign_limit=args.benign_limit,
+            prefer_wenyan=args.prefer_wenyan,
+        )
         
         split_output_dir = output_dir / split
         split_output_dir.mkdir(exist_ok=True)

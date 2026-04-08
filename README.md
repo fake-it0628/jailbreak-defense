@@ -211,6 +211,11 @@ python scripts/evaluate_benchmark.py
 - If you hit `OSError ... (os error 1455)` when calling `from_pretrained`, increase system pagefile size and rerun.  
 - All training/eval scripts support `--device cpu`.
 
+**CPU subset pipeline (optional)**  
+- `python scripts/run_cpu_subset.py --dry-run` — prints capped split sizes locally (terminal only; **do not commit** console logs as project documentation).  
+- `python scripts/run_cpu_subset.py --device cpu` — runs a reduced train → refusal → steering → risk → integrate → eval flow; metrics land in `results/` (gitignored).  
+- `generate_hidden_states.py` / `train_safety_prober.py` / `evaluate_benchmark.py` also accept `--jailbreak_limit`, `--benign_limit`, and `--prefer_wenyan` for manual control.
+
 **Dataset v2 summary (default)** | Source | Count |
 |---|---|---|
 | Benign (Alpaca) | `alpaca` | 5,000 |
@@ -233,7 +238,8 @@ jailbreak-defense/
 │   └── defense_system.py         # 🛡️ Complete defense pipeline
 ├── 📂 demo/                      # 🎮 Interactive demo (Gradio)
 ├── 📂 scripts/                   # Training & evaluation scripts
-│   └── build_large_harmful_dataset.py  # Dataset v2: ~5k harmful + ~1.5k classical Chinese
+│   ├── build_large_harmful_dataset.py  # Dataset v2: ~5k harmful + ~1.5k classical Chinese
+│   └── run_cpu_subset.py               # Optional CPU-capped pipeline + --dry-run
 ├── 📂 checkpoints/               # Pre-trained models ✓
 ├── 📂 figures/                   # Paper figures
 ├── 📂 paper/                     # Paper drafts (LaTeX, PDF)
