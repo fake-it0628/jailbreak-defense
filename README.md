@@ -206,6 +206,11 @@ python scripts/integrate_system.py
 python scripts/evaluate_benchmark.py
 ```
 
+**CPU prerequisites (Windows)**  
+- Ensure enough **virtual memory/pagefile** is available before loading `Qwen/Qwen2.5-0.5B-Instruct`.  
+- If you hit `OSError ... (os error 1455)` when calling `from_pretrained`, increase system pagefile size and rerun.  
+- All training/eval scripts support `--device cpu`.
+
 **Dataset v2 summary (default)** | Source | Count |
 |---|---|---|
 | Benign (Alpaca) | `alpaca` | 5,000 |

@@ -77,7 +77,8 @@ def load_model(model_name: str, device: str):
         torch_dtype=torch.float16 if device == "cuda" else torch.float32,
         device_map="auto" if device == "cuda" else None,
         output_hidden_states=True,
-        trust_remote_code=True
+        trust_remote_code=True,
+        low_cpu_mem_usage=True
     )
     
     if device == "cpu":

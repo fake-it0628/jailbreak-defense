@@ -77,12 +77,14 @@ def load_model(model_name: str, device: str):
         tokenizer.pad_token = tokenizer.eos_token
     
     # 加载模型
+    dtype = torch.float16 if device in ("cuda", "cpu") else torch.float32
     model = AutoModelForCausalLM.from_pretrained(
         model_name,
-        torch_dtype=torch.float16 if device == "cuda" else torch.float32,
+        torch_dtype=dtype,
         device_map="auto" if device == "cuda" else None,
         output_hidden_states=True,  # 关键！
-        trust_remote_code=True
+        trust_remote_code=True,
+        low_cpu_mem_usage=True
     )
     
     if device == "cpu":
